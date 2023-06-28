@@ -12,7 +12,7 @@ def get_req(path_file:str):
 
 setup(
     name = "ml_project",
-    author=  "tahul",
+    author=  "Rahul",
     version= "0.0.1",
     packages= find_packages(),
     install_require =  get_req("requirements.txt")
