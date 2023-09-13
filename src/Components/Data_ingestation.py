@@ -6,8 +6,7 @@ from src.logger import logging
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
-
-
+from data_transformation import Data_transformation
 @dataclass
 class Data_ingestion_config:
     train_data_path: str =  os.path.join("artifact","train.csv")
@@ -46,8 +45,10 @@ class Data_ingestion:
         
 if __name__ == "__main__":
     obj =  Data_ingestion()
-    obj.intiate_data_ingestion() 
+    train_data,test_data = obj.intiate_data_ingestion() 
 
+    data_trans =  Data_transformation()
+    data_trans.initiate_data_transformation(train_data,test_data)
         
 
                 
