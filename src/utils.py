@@ -26,12 +26,18 @@ def save_object(file_path , obj):
         except Exception as e:
               raise CustomException(e,sys)
         
-def evaluate_model(X,Y,X_test,Y_test,Models):
+def evaluate_model(X,Y,X_test,Y_test,Models,Param):
     try:
         report = {}
         for i in range(len(list(Models))):
             model = list(Models.values())[i]
-            model.fit(X, Y) # Train model
+            para  = Param[list(Models.keys())[i]]
+
+            gs = GridSearchCV(model,para,cv=3)
+            gs.fit(X,Y)
+
+            model.set_params(**gs.best_params_)
+            model.fit(X,Y)
 
             # Make predictions
             y_train_pred = model.predict(X)
