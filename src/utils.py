@@ -25,6 +25,13 @@ def save_object(file_path , obj):
                   pickle.dump(obj,file_obj)
         except Exception as e:
               raise CustomException(e,sys)
+def load_Obj(file_path):
+        try:
+            with open(file_path,"rb") as file_obj:
+                  return dill.load(file_obj)
+        except Exception as e:
+              raise CustomException(e,sys)        
+        
         
 def evaluate_model(X,Y,X_test,Y_test,Models,Param):
     try:

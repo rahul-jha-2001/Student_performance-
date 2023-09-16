@@ -26,7 +26,7 @@ from src.exception import CustomException
 @dataclass
 
 class Model_training_config:
-    trained_model_path = os.path.join("artifacts","model.pkl")
+    trained_model_path = os.path.join("artifact","model.pkl")
 class Model_trainer:
     def __init__(self) -> None:
         self.model_trainer_config = Model_training_config()
